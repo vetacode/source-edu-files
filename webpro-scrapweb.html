@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cara Membuat Auto Feed Artikel dengan HTML dan JavaScript</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        color: #222;
+        line-height: 1.7;
+      }
+
+      header {
+        background: linear-gradient(135deg, #0f172a, #2563eb);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 36px;
+        margin: 0 0 15px;
+      }
+
+      header p {
+        max-width: 850px;
+        margin: auto;
+        font-size: 18px;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px 20px;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        padding: 28px;
+        margin-bottom: 25px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      .card h2 {
+        margin-top: 0;
+        color: #1d4ed8;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #dbeafe;
+        color: #1e40af;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 12px;
+      }
+
+      pre {
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 18px;
+        border-radius: 12px;
+        overflow-x: auto;
+        font-size: 14px;
+      }
+
+      code {
+        color: #60a5fa;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .flow div {
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 12px;
+        padding: 18px;
+        text-align: center;
+        font-weight: bold;
+        color: #1e3a8a;
+      }
+
+      .warning {
+        background: #fff7ed;
+        border-left: 6px solid #f97316;
+      }
+
+      .success {
+        background: #ecfdf5;
+        border-left: 6px solid #10b981;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px;
+        background: #0f172a;
+        color: white;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: inline-block;
+        background: #2563eb;
+        color: white;
+        padding: 14px 22px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 15px;
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Cara Membuat Auto Feed Artikel dengan HTML dan JavaScript</h1>
+      <p>
+        Panduan sederhana untuk menampilkan artikel dari halaman lain dalam
+        domain yang sama menggunakan teknik fetch, DOMParser, dan querySelector.
+      </p>
+    </header>
+
+    <div class="container">
+      <div class="card success">
+        <span class="badge">Konsep Utama</span>
+        <h2>Apa Itu Auto Feed Artikel?</h2>
+        <p>
+          Auto Feed Artikel adalah teknik untuk mengambil daftar artikel dari
+          satu halaman sumber, lalu menampilkannya kembali di halaman lain
+          secara otomatis.
+        </p>
+        <p>
+          Dalam metode ini, kita tidak langsung mengambil database. Yang diambil
+          adalah
+          <b>HTML halaman sumber</b>, lalu JavaScript membaca bagian tertentu
+          seperti gambar, judul, link, deskripsi, dan tanggal.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 1</span>
+        <h2>Siapkan Halaman Sumber Artikel</h2>
+        <p>Pertama, pastikan Anda punya halaman sumber artikel. Contohnya:</p>
+
+        <pre><code>https://suksespintar.biz.id/2/articles</code></pre>
+
+        <p>
+          Di halaman tersebut, struktur artikelnya sebaiknya konsisten seperti
+          ini:
+        </p>
+
+        <pre><code>&lt;section&gt;
+  &lt;article&gt;
+    &lt;img src="gambar.jpg" alt="Judul Artikel"&gt;
+
+    &lt;h4&gt;
+      &lt;a href="artikel-detail.html"&gt;Judul Artikel&lt;/a&gt;
+    &lt;/h4&gt;
+
+    &lt;p&gt;Deskripsi singkat artikel...&lt;/p&gt;
+
+    &lt;small&gt;28 April 2026&lt;/small&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 2</span>
+        <h2>Siapkan Halaman Tujuan</h2>
+        <p>
+          Halaman tujuan adalah halaman yang akan menampilkan artikel hasil
+          tarikan. Buat wadah kosong seperti ini:
+        </p>
+
+        <pre><code>&lt;div id="artikel"&gt;
+    Loading artikel...
+&lt;/div&gt;</code></pre>
+
+        <p>Nanti isi dari div ini akan diganti otomatis oleh JavaScript.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 3</span>
+        <h2>Ambil Halaman Sumber dengan Fetch</h2>
+        <p>
+          Gunakan perintah <b>fetch()</b> untuk mengambil isi halaman sumber.
+        </p>
+
+        <pre><code>const res = await fetch("https://suksespintar.biz.id/2/articles", {
+    cache: "no-store"
+});
+
+const html = await res.text();</code></pre>
+
+        <p>Perintah ini mengambil halaman artikel dalam bentuk teks HTML.</p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 4</span>
+        <h2>Ubah HTML Menjadi Dokumen</h2>
+        <p>
+          Setelah HTML berhasil diambil, ubah HTML tersebut menjadi dokumen yang
+          bisa dibaca JavaScript.
+        </p>
+
+        <pre><code>const doc = new DOMParser().parseFromString(html, "text/html");</code></pre>
+
+        <p>
+          Dengan DOMParser, kita bisa mencari elemen di dalam halaman sumber
+          seolah-olah halaman itu sedang terbuka di browser.
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 5</span>
+        <h2>Ambil Semua Artikel</h2>
+        <p>Setelah menjadi dokumen, ambil semua elemen artikel.</p>
+
+        <pre><code>const articles = doc.querySelectorAll("section article");</code></pre>
+
+        <p>Artinya JavaScript akan mencari semua elemen:</p>
+
+        <pre><code>&lt;section&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/section&gt;</code></pre>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 6</span>
+        <h2>Ambil Gambar, Judul, Link, Deskripsi, dan Tanggal</h2>
+        <p>Dari setiap artikel, ambil bagian pentingnya.</p>
+
+        <pre><code>const img = a.querySelector("img");
+const link = a.querySelector("h4 a");
+
+const title = link.textContent.trim();
+const href = link.href;
+const desc = (a.querySelector("p")?.textContent || "").slice(0,120) + "...";
+const date = a.querySelector("small")?.textContent || "";</code></pre>
+      </div>
+
+      <div class="card">
+        <span class="badge">Tahap 7</span>
+        <h2>Tampilkan ke Halaman Tujuan</h2>
+        <p>Setelah data diambil, susun menjadi card artikel.</p>
+
+        <pre><code>output += `
+&lt;div class="card-artikel"&gt;
+    &lt;img src="${img.src}" alt="${title}"&gt;
+    &lt;div&gt;
+        &lt;h3&gt;&lt;a href="${href}"&gt;${title}&lt;/a&gt;&lt;/h3&gt;
+        &lt;p&gt;${desc}&lt;/p&gt;
+        &lt;small&gt;${date}&lt;/small&gt;
+    &lt;/div&gt;
+&lt;/div&gt;`;
+
+box.innerHTML = output;</code></pre>
+      </div>
+
+      <div class="card success">
+        <span class="badge">Full Script</span>
+        <h2>Contoh Script Lengkap</h2>
+
+        <pre><code>&lt;div id="artikel"&gt;Loading artikel...&lt;/div&gt;
+
+&lt;script&gt;
+async function loadArtikelProfil(){
+    const url = "https://suksespintar.biz.id/2/articles";
+    const box = document.getElementById("artikel");
+
+    try{
+        const res = await fetch(url, { cache: "no-store" });
+        const html = await res.text();
+
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        const articles = doc.querySelectorAll("section article");
+
+        let output = "";
+        let count = 0;
+
+        articles.forEach(a =&gt; {
+            if(count &gt;= 6) return;
+
+            const img = a.querySelector("img");
+            const link = a.querySelector("h4 a");
+
+            if(!img || !link) return;
+
+            const title = link.textContent.trim();
+            const href = link.href;
+            const desc = (a.querySelector("p")?.textContent || "").slice(0,120) + "...";
+            const date = a.querySelector("small")?.textContent || "";
+
+            output += `
+                &lt;div class="card-artikel"&gt;
+                    &lt;img src="${img.src}" alt="${title}"&gt;
+                    &lt;div&gt;
+                        &lt;h3&gt;&lt;a href="${href}"&gt;${title}&lt;/a&gt;&lt;/h3&gt;
+                        &lt;p&gt;${desc}&lt;/p&gt;
+                        &lt;small&gt;${date}&lt;/small&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            `;
+
+            count++;
+        });
+
+        box.innerHTML = output || "&lt;p&gt;Tidak ada publikasi.&lt;/p&gt;";
+
+    }catch(e){
+        box.innerHTML = "&lt;p&gt;Gagal memuat data.&lt;/p&gt;";
+    }
+}
+
+loadArtikelProfil();
+&lt;/script&gt;</code></pre>
+      </div>
+
+      <div class="card">
+        <span class="badge">Alur Kerja</span>
+        <h2>Alur Sistemnya</h2>
+
+        <div class="flow">
+          <div>Halaman Sumber</div>
+          <div>Fetch</div>
+          <div>DOMParser</div>
+          <div>QuerySelector</div>
+          <div>Tampil di Halaman Tujuan</div>
+        </div>
+      </div>
+
+      <div class="card warning">
+        <span class="badge">Catatan Penting</span>
+        <h2>Syarat Agar Berhasil</h2>
+        <ul>
+          <li>
+            Lebih aman jika sumber dan tujuan masih dalam domain yang sama.
+          </li>
+          <li>Struktur HTML halaman sumber harus konsisten.</li>
+          <li>
+            Kalau struktur artikel berubah, selector JavaScript juga harus
+            disesuaikan.
+          </li>
+          <li>Metode ini tidak membaca database langsung.</li>
+          <li>Yang dibaca adalah halaman HTML yang sudah jadi.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="badge">Nama Teknik</span>
+        <h2>Teknik Ini Biasa Disebut Apa?</h2>
+        <ul>
+          <li>Client-side HTML Fetch</li>
+          <li>DOM Parsing</li>
+          <li>Auto Feed Artikel</li>
+          <li>Internal Content Loader</li>
+          <li>Client-side Content Aggregator</li>
+        </ul>
+      </div>
+
+      <div class="card success">
+        <span class="badge">Kesimpulan</span>
+        <h2>Kesimpulan Sederhana</h2>
+        <p>
+          Dengan HTML dan JavaScript, Anda bisa membuat sistem penarik artikel
+          otomatis dari halaman lain dalam domain yang sama. Teknik ini cocok
+          untuk:
+        </p>
+
+        <ul>
+          <li>Portal artikel</li>
+          <li>Halaman profil</li>
+          <li>Portal kategori</li>
+          <li>Website komunitas</li>
+          <li>Landing page yang ingin menampilkan publikasi terbaru</li>
+        </ul>
+
+        <p>
+          Intinya: satu halaman menjadi sumber konten, halaman lain tinggal
+          menarik dan menampilkan.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <p>Materi: Auto Feed Artikel dengan HTML + JavaScript</p>
+    </footer>
+  </body>
+</html>
