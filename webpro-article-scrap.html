@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Feed</title>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f5f5f5;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 14px;
+      }
+
+      .card h4 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .card h4 a {
+        text-decoration: none;
+        color: #222;
+      }
+
+      .card h4 a:hover {
+        color: #007bff;
+      }
+
+      .card p {
+        font-size: 14px;
+        color: #555;
+        margin-bottom: 10px;
+      }
+
+      .card small {
+        color: #888;
+        font-size: 12px;
+      }
+
+      .error {
+        text-align: center;
+        color: red;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Artikel Terbaru</h2>
+      <div id="news-container" class="grid"></div>
+      <div id="error" class="error"></div>
+    </div>
+
+    <script>
+      const URL = 'https://carisolusi.biz.id/2/news';
+
+      async function loadNews() {
+        try {
+          const res = await fetch(URL);
+          if (!res.ok) throw new Error('Fetch gagal');
+
+          const htmlText = await res.text();
+
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlText, 'text/html');
+
+          const articles = doc.querySelectorAll('section article');
+
+          const container = document.getElementById('news-container');
+
+          let count = 0;
+
+          articles.forEach((article) => {
+            if (count >= 6) return;
+
+            const img = article.querySelector('img')?.getAttribute('src') || '';
+            const titleEl = article.querySelector('h4 a');
+            const title = titleEl?.innerText || 'Tanpa Judul';
+            const link = titleEl?.getAttribute('href') || '#';
+            const desc = article.querySelector('p')?.innerText || '';
+            const date = article.querySelector('small')?.innerText || '';
+
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+          <img src="${img}" alt="${title}">
+          <div class="card-body">
+            <h4><a href="${link}" target="_blank">${title}</a></h4>
+            <p>${desc}</p>
+            <small><i class="fa fa-calendar"></i> ${date}</small>
+          </div>
+        `;
+
+            container.appendChild(card);
+            count++;
+          });
+        } catch (err) {
+          document.getElementById('error').innerText = 'Gagal memuat data';
+          console.error(err);
+        }
+      }
+
+      loadNews();
+    </script>
+  </body>
+</html>
