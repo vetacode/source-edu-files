@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Apakah Anda Cocok Punya Istri Lebih Dari Satu?</title>
 
-    <!-- Open Graph (WA, FB, Telegram) -->
+    <!-- Open Graph -->
     <meta
       property="og:title"
-      content="Apakah Anda Cocok Punya Istri Lebih Dari Satu? 😄"
+      content="Apakah Anda Cocok Punya Istri Lebih Dari Satu?"
     />
     <meta
       property="og:description"
@@ -16,25 +16,10 @@
     />
     <meta
       property="og:image"
-      content="https://suksespintar.biz.id/gambarbebas/20260429-071909_ChatGPT%20Image%20Apr%2029,%202026,%2007_18_35%20AM.png"
+      content="https://suksespintar.biz.id/gambarbebas/20260429-071909_ChatGPT%20Image.png"
     />
     <meta property="og:url" content="https://domainanda.com/quiz-istri" />
     <meta property="og:type" content="website" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Apakah Anda Cocok Punya Istri Lebih Dari Satu? 😄"
-    />
-    <meta
-      name="twitter:description"
-      content="Quiz lucu + nasehat rumah tangga. Coba sekarang!"
-    />
-    <meta
-      name="twitter:image"
-      content="https://suksespintar.biz.id/gambarbebas/20260429-071909_ChatGPT%20Image%20Apr%2029,%202026,%2007_18_35%20AM.png"
-    />
 
     <!-- Font Awesome -->
     <link
@@ -50,78 +35,40 @@
         color: #0b1f3a;
       }
 
-      /* Container utama */
       .mobile {
         width: 100%;
-        max-width: 900px; /* lebih lebar di desktop */
+        max-width: 900px;
         margin: auto;
         padding: 10px;
       }
 
-      /* Desktop scaling */
       @media (min-width: 768px) {
         body {
-          font-size: 18px; /* perbesar global */
+          font-size: 18px;
         }
-
         .header {
           font-size: 22px;
           padding: 20px;
         }
-
         .content {
           padding: 30px;
         }
-
         .card {
           padding: 30px;
           border-radius: 20px;
         }
-
         .soal {
           font-size: 26px;
         }
-
         .option {
           font-size: 18px;
           padding: 15px;
         }
-
         .big {
           font-size: 30px;
         }
-
-        .note {
-          font-size: 16px;
-          padding: 15px;
-        }
-
-        .share-btn,
-        .restart,
-        .next {
-          font-size: 16px;
-          padding: 14px;
-        }
       }
 
-      /* Extra besar (laptop / monitor) */
-      @media (min-width: 1200px) {
-        .mobile {
-          max-width: 1100px;
-        }
-
-        body {
-          font-size: 20px;
-        }
-
-        .soal {
-          font-size: 30px;
-        }
-
-        .big {
-          font-size: 34px;
-        }
-      }
       .header {
         background: #062b5f;
         color: #fff;
@@ -129,20 +76,24 @@
         text-align: center;
         font-weight: bold;
       }
+
       .content {
         padding: 20px;
       }
+
       .card {
         background: #f7fbff;
         padding: 20px;
         border-radius: 15px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
       }
+
       .soal {
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
       }
+
       .option {
         width: 100%;
         padding: 12px;
@@ -153,9 +104,11 @@
         color: white;
         cursor: pointer;
       }
+
       .option:hover {
         background: #08407f;
       }
+
       .feedback {
         margin-top: 10px;
         padding: 10px;
@@ -163,6 +116,7 @@
         background: #eaf3ff;
         display: none;
       }
+
       .next {
         margin-top: 10px;
         padding: 12px;
@@ -172,14 +126,17 @@
         border-radius: 10px;
         display: none;
       }
+
       .result {
         text-align: center;
       }
+
       .big {
         font-size: 24px;
         font-weight: bold;
         margin: 10px 0;
       }
+
       .note {
         background: #fff7df;
         padding: 10px;
@@ -188,10 +145,10 @@
         text-align: left;
       }
 
-      /* Share */
       .share-group {
         margin-top: 15px;
       }
+
       .share-btn {
         width: 100%;
         padding: 12px;
@@ -206,6 +163,7 @@
         justify-content: center;
         gap: 10px;
       }
+
       .wa {
         background: #25d366;
       }
@@ -231,13 +189,18 @@
         border: none;
         border-radius: 10px;
       }
+
+      i.fa-solid,
+      i.fa-brands {
+        margin-left: 6px;
+      }
     </style>
   </head>
 
   <body>
     <div class="mobile">
       <div class="header">
-        <i class="fa-solid fa-heart"></i> Tes Poligami Realita 😄
+        <i class="fa-solid fa-heart"></i> Tes Poligami Realita
       </div>
 
       <div class="content">
@@ -252,7 +215,10 @@
           pilihan: [
             { teks: 'Langsung respon', poin: 5 },
             { teks: 'Nanti dulu', poin: 3 },
-            { teks: 'Pura-pura tidak dengar 😅', poin: 1 },
+            {
+              teks: 'Pura-pura tidak dengar <i class="fa-solid fa-face-grin-squint"></i>',
+              poin: 1,
+            },
             { teks: 'Sebentar tapi hilang', poin: 0 },
           ],
           respon: 'Perhatian itu bukan bonus, tapi kewajiban.',
@@ -263,7 +229,10 @@
             { teks: 'Aman', poin: 5 },
             { teks: 'Cukup', poin: 3 },
             { teks: 'Kadang mepet', poin: 1 },
-            { teks: 'Survival 😆', poin: 0 },
+            {
+              teks: 'Survival <i class="fa-solid fa-face-laugh"></i>',
+              poin: 0,
+            },
           ],
           respon: 'Cinta tanpa logistik = drama berkepanjangan.',
         },
@@ -273,7 +242,10 @@
             { teks: 'Tenangkan', poin: 5 },
             { teks: 'Diam dulu', poin: 3 },
             { teks: 'Ikut emosi', poin: 1 },
-            { teks: 'Kabur 😆', poin: 0 },
+            {
+              teks: 'Kabur <i class="fa-solid fa-person-running"></i>',
+              poin: 0,
+            },
           ],
           respon: 'Emosi satu saja sudah PR besar.',
         },
@@ -293,7 +265,10 @@
             { teks: 'Siap', poin: 5 },
             { teks: 'Coba', poin: 3 },
             { teks: 'Berat', poin: 1 },
-            { teks: 'Satu saja cukup 😅', poin: 0 },
+            {
+              teks: 'Satu saja cukup <i class="fa-solid fa-face-smile-beam"></i>',
+              poin: 0,
+            },
           ],
           respon: 'Adil itu berat, bukan sekadar niat.',
         },
@@ -305,19 +280,12 @@
 
       function tampilSoal() {
         let s = soal[index];
-
         document.getElementById('quizBox').innerHTML = `
-<div class="soal">${s.tanya}</div>
-${s.pilihan
-  .map(
-    (p, i) => `
-<button class="option" onclick="jawab(${i})">${p.teks}</button>
-`,
-  )
-  .join('')}
-<div id="feedback" class="feedback"></div>
-<button id="next" class="next" onclick="nextSoal()">Lanjut</button>
-`;
+          <div class="soal">${s.tanya}</div>
+          ${s.pilihan.map((p, i) => `<button class="option" onclick="jawab(${i})">${p.teks}</button>`).join('')}
+          <div id="feedback" class="feedback"></div>
+          <button id="next" class="next" onclick="nextSoal()">Lanjut</button>
+        `;
       }
 
       function jawab(i) {
@@ -338,11 +306,8 @@ ${s.pilihan
 
       function nextSoal() {
         index++;
-        if (index < soal.length) {
-          tampilSoal();
-        } else {
-          hasil();
-        }
+        if (index < soal.length) tampilSoal();
+        else hasil();
       }
 
       function hasil() {
@@ -351,69 +316,45 @@ ${s.pilihan
           nasehat = '';
 
         if (score >= 20) {
-          judul = 'Secara Teori Anda Siap 😄';
+          judul =
+            'Secara Teori Anda Siap <i class="fa-solid fa-face-smile"></i>';
           isi = 'Anda terlihat punya kemampuan.';
           nasehat = 'Tapi ingat, ini bukan teori. Keadilan itu sangat berat.';
         } else if (score >= 12) {
-          judul = 'Potensi Ada 🤭';
+          judul =
+            'Potensi Ada <i class="fa-solid fa-face-grin-tongue-wink"></i>';
           isi = 'Anda punya niat, tapi belum stabil.';
           nasehat = 'Fokus satu dulu sampai benar-benar kuat.';
         } else {
-          judul = 'Cukup Satu Dulu 😂';
+          judul =
+            'Cukup Satu Dulu <i class="fa-solid fa-face-laugh-squint"></i>';
           isi = 'Satu saja sudah menantang.';
           nasehat = 'Bahagiakan yang ada, itu lebih mulia.';
         }
 
         pesanFinal = encodeURIComponent(
-          `Aku coba quiz 😆
-Hasilku: ${judul}
-
-${isi}
-
-${nasehat}
-
-Coba kamu juga 😜`,
+          `Aku coba quiz\nHasilku: ${judul.replace(/<[^>]*>/g, '')}\n\n${isi}\n\n${nasehat}\n\nCoba kamu juga`,
         );
 
         document.getElementById('quizBox').innerHTML = `
-<div class="result">
-<h2>Hasil Akhir</h2>
-<div class="big">${judul}</div>
-<p>${isi}</p>
-<div class="note">${nasehat}</div>
+          <div class="result">
+            <h2>Hasil Akhir</h2>
+            <div class="big">${judul}</div>
+            <p>${isi}</p>
+            <div class="note">${nasehat}</div>
 
-<div class="share-group">
-<button class="share-btn wa" onclick="shareWA()">
-<i class="fa-brands fa-whatsapp"></i> WhatsApp
-</button>
+            <div class="share-group">
+              <button class="share-btn wa" onclick="shareWA()"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
+              <button class="share-btn fb" onclick="shareFB()"><i class="fa-brands fa-facebook"></i> Facebook</button>
+              <button class="share-btn tw" onclick="shareTW()"><i class="fa-brands fa-x-twitter"></i> Twitter</button>
+              <button class="share-btn tg" onclick="shareTG()"><i class="fa-brands fa-telegram"></i> Telegram</button>
+              <button class="share-btn copy" onclick="copyText()"><i class="fa-solid fa-copy"></i> Copy</button>
+            </div>
 
-<button class="share-btn fb" onclick="shareFB()">
-<i class="fa-brands fa-facebook"></i> Facebook
-</button>
-
-<button class="share-btn tw" onclick="shareTW()">
-<i class="fa-brands fa-x-twitter"></i> X / Twitter
-</button>
-
-<button class="share-btn tg" onclick="shareTG()">
-<i class="fa-brands fa-telegram"></i> Telegram
-</button>
-
-<button class="share-btn copy" onclick="copyText()">
-<i class="fa-solid fa-copy"></i> Copy
-</button>
-</div>
-
-<button class="restart" onclick="ulang()">
-<i class="fa-solid fa-rotate"></i> Ulangi Quiz
-</button>
-
-<button class="restart" onclick="waSaya()">
-<i class="fa-solid fa-comments"></i> Konsultasi WA
-</button>
-
-</div>
-`;
+            <button class="restart" onclick="ulang()"><i class="fa-solid fa-rotate"></i> Ulangi Quiz</button>
+            <button class="restart" onclick="waSaya()"><i class="fa-solid fa-comments"></i> Konsultasi WA</button>
+          </div>
+        `;
       }
 
       function shareWA() {
@@ -441,7 +382,7 @@ Coba kamu juga 😜`,
       }
       function copyText() {
         navigator.clipboard.writeText(decodeURIComponent(pesanFinal));
-        alert('Teks berhasil di-copy 😄');
+        alert('Teks berhasil di-copy');
       }
       function ulang() {
         index = 0;
@@ -449,7 +390,9 @@ Coba kamu juga 😜`,
         tampilSoal();
       }
       function waSaya() {
-        window.open('https://wa.me/6285174092993');
+        window.open(
+          'https://wa.me/6281384072641?text=Halo-saya-minat-quiz-poligami',
+        );
       }
 
       tampilSoal();
