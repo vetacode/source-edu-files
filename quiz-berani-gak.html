@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apakah Anda Cocok Punya Istri Lebih Dari Satu?</title>
+
+    <!-- Open Graph (WA, FB, Telegram) -->
+    <meta
+      property="og:title"
+      content="Apakah Anda Cocok Punya Istri Lebih Dari Satu? 😄"
+    />
+    <meta
+      property="og:description"
+      content="Quiz lucu + nasehat rumah tangga. Coba sekarang!"
+    />
+    <meta
+      property="og:image"
+      content="https://suksespintar.biz.id/gambarbebas/20260429-071909_ChatGPT%20Image%20Apr%2029,%202026,%2007_18_35%20AM.png"
+    />
+    <meta property="og:url" content="https://domainanda.com/quiz-istri" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Apakah Anda Cocok Punya Istri Lebih Dari Satu? 😄"
+    />
+    <meta
+      name="twitter:description"
+      content="Quiz lucu + nasehat rumah tangga. Coba sekarang!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://suksespintar.biz.id/gambarbebas/20260429-071909_ChatGPT%20Image%20Apr%2029,%202026,%2007_18_35%20AM.png"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #fff;
+        color: #0b1f3a;
+      }
+      .mobile {
+        max-width: 430px;
+        margin: auto;
+      }
+      .header {
+        background: #062b5f;
+        color: #fff;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .content {
+        padding: 20px;
+      }
+      .card {
+        background: #f7fbff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      }
+      .soal {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+      .option {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 10px;
+        background: #062b5f;
+        color: white;
+        cursor: pointer;
+      }
+      .option:hover {
+        background: #08407f;
+      }
+      .feedback {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        background: #eaf3ff;
+        display: none;
+      }
+      .next {
+        margin-top: 10px;
+        padding: 12px;
+        width: 100%;
+        background: #ffb703;
+        border: none;
+        border-radius: 10px;
+        display: none;
+      }
+      .result {
+        text-align: center;
+      }
+      .big {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+      .note {
+        background: #fff7df;
+        padding: 10px;
+        border-radius: 10px;
+        margin-top: 10px;
+        text-align: left;
+      }
+
+      /* Share */
+      .share-group {
+        margin-top: 15px;
+      }
+      .share-btn {
+        width: 100%;
+        padding: 12px;
+        margin: 6px 0;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+      .wa {
+        background: #25d366;
+      }
+      .fb {
+        background: #1877f2;
+      }
+      .tw {
+        background: #000;
+      }
+      .tg {
+        background: #229ed9;
+      }
+      .copy {
+        background: #555;
+      }
+
+      .restart {
+        margin-top: 10px;
+        padding: 12px;
+        width: 100%;
+        background: #062b5f;
+        color: white;
+        border: none;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="mobile">
+      <div class="header">
+        <i class="fa-solid fa-heart"></i> Tes Poligami Realita 😄
+      </div>
+
+      <div class="content">
+        <div class="card" id="quizBox"></div>
+      </div>
+    </div>
+
+    <script>
+      const soal = [
+        {
+          tanya: 'Saat pasangan minta perhatian?',
+          pilihan: [
+            { teks: 'Langsung respon', poin: 5 },
+            { teks: 'Nanti dulu', poin: 3 },
+            { teks: 'Pura-pura tidak dengar 😅', poin: 1 },
+            { teks: 'Sebentar tapi hilang', poin: 0 },
+          ],
+          respon: 'Perhatian itu bukan bonus, tapi kewajiban.',
+        },
+        {
+          tanya: 'Kondisi keuangan Anda?',
+          pilihan: [
+            { teks: 'Aman', poin: 5 },
+            { teks: 'Cukup', poin: 3 },
+            { teks: 'Kadang mepet', poin: 1 },
+            { teks: 'Survival 😆', poin: 0 },
+          ],
+          respon: 'Cinta tanpa logistik = drama berkepanjangan.',
+        },
+        {
+          tanya: 'Kalau pasangan marah?',
+          pilihan: [
+            { teks: 'Tenangkan', poin: 5 },
+            { teks: 'Diam dulu', poin: 3 },
+            { teks: 'Ikut emosi', poin: 1 },
+            { teks: 'Kabur 😆', poin: 0 },
+          ],
+          respon: 'Emosi satu saja sudah PR besar.',
+        },
+        {
+          tanya: 'Mental Anda?',
+          pilihan: [
+            { teks: 'Sangat sabar', poin: 5 },
+            { teks: 'Lumayan', poin: 3 },
+            { teks: 'Cepat lelah', poin: 1 },
+            { teks: 'Langsung down', poin: 0 },
+          ],
+          respon: 'Mental kuat itu wajib.',
+        },
+        {
+          tanya: 'Kalau diminta adil?',
+          pilihan: [
+            { teks: 'Siap', poin: 5 },
+            { teks: 'Coba', poin: 3 },
+            { teks: 'Berat', poin: 1 },
+            { teks: 'Satu saja cukup 😅', poin: 0 },
+          ],
+          respon: 'Adil itu berat, bukan sekadar niat.',
+        },
+      ];
+
+      let index = 0,
+        score = 0,
+        pesanFinal = '';
+
+      function tampilSoal() {
+        let s = soal[index];
+
+        document.getElementById('quizBox').innerHTML = `
+<div class="soal">${s.tanya}</div>
+${s.pilihan
+  .map(
+    (p, i) => `
+<button class="option" onclick="jawab(${i})">${p.teks}</button>
+`,
+  )
+  .join('')}
+<div id="feedback" class="feedback"></div>
+<button id="next" class="next" onclick="nextSoal()">Lanjut</button>
+`;
+      }
+
+      function jawab(i) {
+        let s = soal[index];
+        score += s.pilihan[i].poin;
+
+        document.querySelectorAll('.option').forEach((b) => {
+          b.disabled = true;
+          b.style.opacity = 0.6;
+        });
+
+        let f = document.getElementById('feedback');
+        f.innerHTML = s.respon;
+        f.style.display = 'block';
+
+        document.getElementById('next').style.display = 'block';
+      }
+
+      function nextSoal() {
+        index++;
+        if (index < soal.length) {
+          tampilSoal();
+        } else {
+          hasil();
+        }
+      }
+
+      function hasil() {
+        let judul = '',
+          isi = '',
+          nasehat = '';
+
+        if (score >= 20) {
+          judul = 'Secara Teori Anda Siap 😄';
+          isi = 'Anda terlihat punya kemampuan.';
+          nasehat = 'Tapi ingat, ini bukan teori. Keadilan itu sangat berat.';
+        } else if (score >= 12) {
+          judul = 'Potensi Ada 🤭';
+          isi = 'Anda punya niat, tapi belum stabil.';
+          nasehat = 'Fokus satu dulu sampai benar-benar kuat.';
+        } else {
+          judul = 'Cukup Satu Dulu 😂';
+          isi = 'Satu saja sudah menantang.';
+          nasehat = 'Bahagiakan yang ada, itu lebih mulia.';
+        }
+
+        pesanFinal = encodeURIComponent(
+          `Aku coba quiz 😆
+Hasilku: ${judul}
+
+${isi}
+
+${nasehat}
+
+Coba kamu juga 😜`,
+        );
+
+        document.getElementById('quizBox').innerHTML = `
+<div class="result">
+<h2>Hasil Akhir</h2>
+<div class="big">${judul}</div>
+<p>${isi}</p>
+<div class="note">${nasehat}</div>
+
+<div class="share-group">
+<button class="share-btn wa" onclick="shareWA()">
+<i class="fa-brands fa-whatsapp"></i> WhatsApp
+</button>
+
+<button class="share-btn fb" onclick="shareFB()">
+<i class="fa-brands fa-facebook"></i> Facebook
+</button>
+
+<button class="share-btn tw" onclick="shareTW()">
+<i class="fa-brands fa-x-twitter"></i> X / Twitter
+</button>
+
+<button class="share-btn tg" onclick="shareTG()">
+<i class="fa-brands fa-telegram"></i> Telegram
+</button>
+
+<button class="share-btn copy" onclick="copyText()">
+<i class="fa-solid fa-copy"></i> Copy
+</button>
+</div>
+
+<button class="restart" onclick="ulang()">
+<i class="fa-solid fa-rotate"></i> Ulangi Quiz
+</button>
+
+<button class="restart" onclick="waSaya()">
+<i class="fa-solid fa-comments"></i> Konsultasi WA
+</button>
+
+</div>
+`;
+      }
+
+      function shareWA() {
+        window.open(
+          'https://wa.me/?text=' + pesanFinal + '%0A%0A' + location.href,
+        );
+      }
+      function shareFB() {
+        window.open(
+          'https://www.facebook.com/sharer/sharer.php?u=' + location.href,
+        );
+      }
+      function shareTW() {
+        window.open(
+          'https://twitter.com/intent/tweet?text=' +
+            pesanFinal +
+            '&url=' +
+            location.href,
+        );
+      }
+      function shareTG() {
+        window.open(
+          'https://t.me/share/url?text=' + pesanFinal + '&url=' + location.href,
+        );
+      }
+      function copyText() {
+        navigator.clipboard.writeText(decodeURIComponent(pesanFinal));
+        alert('Teks berhasil di-copy 😄');
+      }
+      function ulang() {
+        index = 0;
+        score = 0;
+        tampilSoal();
+      }
+      function waSaya() {
+        window.open('https://wa.me/6285174092993');
+      }
+
+      tampilSoal();
+    </script>
+  </body>
+</html>
