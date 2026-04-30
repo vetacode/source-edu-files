@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menjalankan Ads Seperti Menjadi Donatur Facebook</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        background: #f3f6fb;
+        font-family: Arial, sans-serif;
+        color: #1d1d1f;
+      }
+      .hero {
+        background: linear-gradient(135deg, #0b2f6b, #1877f2);
+        color: white;
+        padding: 70px 20px;
+        border-radius: 0 0 35px 35px;
+      }
+      .hero h1 {
+        font-weight: 800;
+        font-size: 42px;
+      }
+      .hero p {
+        font-size: 20px;
+        opacity: 0.95;
+      }
+      .section-card {
+        background: white;
+        border-radius: 22px;
+        padding: 30px;
+        margin-bottom: 25px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      }
+      .icon-box {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        background: #e8f1ff;
+        color: #1877f2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 26px;
+        margin-bottom: 15px;
+      }
+      .danger-box {
+        background: #fff1f1;
+        border-left: 7px solid #dc3545;
+      }
+      .warning-box {
+        background: #fff8e1;
+        border-left: 7px solid #ffc107;
+      }
+      .success-box {
+        background: #eafaf1;
+        border-left: 7px solid #198754;
+      }
+      .quote {
+        font-size: 28px;
+        font-weight: 800;
+        color: #0b2f6b;
+        line-height: 1.4;
+      }
+      table th {
+        background: #0b2f6b !important;
+        color: white !important;
+      }
+      .badge-status {
+        padding: 8px 12px;
+        border-radius: 50px;
+        font-size: 13px;
+      }
+      .footer-cta {
+        background: #0b2f6b;
+        color: white;
+        padding: 50px 20px;
+        border-radius: 30px 30px 0 0;
+        margin-top: 40px;
+      }
+      .number-big {
+        font-size: 38px;
+        font-weight: 800;
+        color: #1877f2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HERO -->
+    <section class="hero text-center">
+      <div class="container">
+        <h1>Menjalankan Ads Seperti Menjadi Donatur Facebook</h1>
+        <p class="mt-3">
+          Ketika biaya closing semakin mendekati harga jual, bisnis terlihat
+          jalan, tapi profit perlahan hilang.
+        </p>
+      </div>
+    </section>
+
+    <div class="container my-5">
+      <!-- MASALAH UTAMA -->
+      <div class="section-card">
+        <div class="icon-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h2 class="fw-bold">Gambaran Masalah</h2>
+        <p>
+          Banyak bisnis awalnya merasa aman karena memiliki margin produk yang
+          besar. Produk dengan modal kecil dijual dengan harga tinggi, sehingga
+          biaya iklan masih terasa wajar.
+        </p>
+        <p>
+          Namun dalam jangka waktu tertentu, biaya per closing terus naik. Dari
+          yang awalnya masih menguntungkan, perlahan mendekati harga jual
+          produk.
+        </p>
+      </div>
+
+      <!-- STRUKTUR PRODUK -->
+      <div class="row">
+        <div class="col-md-4">
+          <div class="section-card text-center">
+            <i class="fa-solid fa-box fa-2x text-primary mb-3"></i>
+            <h5>Modal Produk</h5>
+            <div class="number-big">8.000</div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="section-card text-center">
+            <i class="fa-solid fa-tag fa-2x text-primary mb-3"></i>
+            <h5>Harga Jual</h5>
+            <div class="number-big">99.000</div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="section-card text-center">
+            <i class="fa-solid fa-chart-line fa-2x text-primary mb-3"></i>
+            <h5>Margin Kotor</h5>
+            <div class="number-big">91.000</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABEL -->
+      <div class="section-card">
+        <h2 class="fw-bold mb-4">
+          <i class="fa-solid fa-table me-2 text-primary"></i>
+          Realita Kenaikan Biaya Closing
+        </h2>
+
+        <div class="table-responsive">
+          <table class="table table-bordered align-middle text-center">
+            <thead>
+              <tr>
+                <th>Tahap</th>
+                <th>Biaya Closing</th>
+                <th>Sisa Margin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Awal</td>
+                <td>30.000</td>
+                <td>61.000</td>
+                <td>
+                  <span class="badge-status bg-success text-white">Sehat</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Stabil</td>
+                <td>50.000</td>
+                <td>41.000</td>
+                <td>
+                  <span class="badge-status bg-primary text-white">Aman</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Waspada</td>
+                <td>70.000</td>
+                <td>21.000</td>
+                <td>
+                  <span class="badge-status bg-warning text-dark"
+                    >Tertekan</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Bahaya</td>
+                <td>90.000</td>
+                <td>1.000</td>
+                <td>
+                  <span class="badge-status bg-danger text-white"
+                    >Hampir Impas</span
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Kritis</td>
+                <td>99.000</td>
+                <td>0</td>
+                <td>
+                  <span class="badge-status bg-dark text-white"
+                    >Tidak Profit</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ANALOGI -->
+      <div class="section-card danger-box">
+        <h2 class="fw-bold">Analogi Sederhana</h2>
+        <p class="quote">
+          Customer membayar 99.000, tapi hampir seluruh uang kembali ke platform
+          iklan.
+        </p>
+        <p>
+          Dalam kondisi ini, bisnis memang terlihat memiliki omzet. Tetapi
+          secara profit, bisnis mulai kehilangan tenaga.
+        </p>
+      </div>
+
+      <!-- MASALAH INTI -->
+      <div class="section-card">
+        <h2 class="fw-bold mb-4">Masalah Inti</h2>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="p-4 warning-box rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-arrow-trend-up me-2"></i> Biaya Akuisisi
+                Naik
+              </h5>
+              <p>
+                Biaya mendapatkan satu pembeli semakin mahal dari waktu ke
+                waktu.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="p-4 warning-box rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-plug-circle-bolt me-2"></i> Ketergantungan
+                Ads
+              </h5>
+              <p>Jika iklan dimatikan, penjualan ikut berhenti.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="p-4 warning-box rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-money-bill-trend-up me-2"></i> Omzet
+                Menipu
+              </h5>
+              <p>
+                Omzet terlihat besar, tetapi profit sebenarnya sangat kecil.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="p-4 warning-box rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-scale-unbalanced me-2"></i> Sulit Scale
+              </h5>
+              <p>Semakin diperbesar, risiko boncos semakin tinggi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAMPAK -->
+      <div class="section-card">
+        <h2 class="fw-bold mb-4">Dampak Jika Tidak Dibenahi</h2>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <i class="fa-solid fa-circle-xmark text-danger me-2"></i>
+            Margin habis untuk biaya iklan.
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-circle-xmark text-danger me-2"></i>
+            Cashflow bisnis menjadi tidak sehat.
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-circle-xmark text-danger me-2"></i>
+            Bisnis terlihat ramai, tetapi keuntungan tidak terasa.
+          </li>
+          <li class="list-group-item">
+            <i class="fa-solid fa-circle-xmark text-danger me-2"></i>
+            Perusahaan semakin bergantung pada platform iklan.
+          </li>
+        </ul>
+      </div>
+
+      <!-- ARAH SOLUSI -->
+      <div class="section-card success-box">
+        <h2 class="fw-bold">Arah Perbaikan</h2>
+        <p>
+          Masalah ini tidak cukup diselesaikan hanya dengan mengganti iklan.
+        </p>
+
+        <div class="row g-3 mt-3">
+          <div class="col-md-4">
+            <div class="bg-white p-4 rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-cart-plus text-success me-2"></i> Naikkan
+                AOV
+              </h5>
+              <p>
+                Jangan hanya menjual satu produk. Gunakan bundling dan paket
+                hemat.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="bg-white p-4 rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-repeat text-success me-2"></i> Repeat
+                Order
+              </h5>
+              <p>Profit harus dibangun dari pembelian kedua dan ketiga.</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="bg-white p-4 rounded-4 h-100">
+              <h5>
+                <i class="fa-solid fa-database text-success me-2"></i> Database
+              </h5>
+              <p>
+                Kumpulkan data customer agar tidak terus membeli traffic dari
+                nol.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER CTA -->
+    <section class="footer-cta text-center">
+      <div class="container">
+        <h2 class="fw-bold">Kesimpulan Utama</h2>
+        <p class="fs-4 mt-3">
+          Jika biaya closing terus mendekati harga jual, maka menjalankan ads
+          bukan lagi investasi, tetapi berubah menjadi donasi untuk platform
+          iklan.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
