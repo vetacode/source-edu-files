@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Generator eBook HTML</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+        color: #fff;
+        line-height: 1.6;
+      }
+      .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 25px 15px 60px;
+      }
+      .hero {
+        text-align: center;
+        padding: 35px 10px;
+      }
+      .hero span {
+        display: inline-block;
+        background: #facc15;
+        color: #111827;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-weight: bold;
+        font-size: 13px;
+        margin-bottom: 12px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 34px;
+        line-height: 1.2;
+      }
+      .hero p {
+        max-width: 760px;
+        margin: 15px auto 0;
+        color: #dbeafe;
+      }
+      .card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 20px;
+        padding: 20px;
+        margin-bottom: 18px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      }
+      .card h2 {
+        margin-top: 0;
+        font-size: 22px;
+      }
+      label {
+        display: block;
+        margin: 12px 0 6px;
+        font-weight: bold;
+        font-size: 14px;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 12px;
+        outline: none;
+        font-size: 15px;
+        background: #fff;
+        color: #111827;
+      }
+      textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+      .btn {
+        border: none;
+        padding: 12px 18px;
+        border-radius: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 6px 5px 6px 0;
+        font-size: 14px;
+      }
+      .btn-primary {
+        background: #22c55e;
+        color: #052e16;
+      }
+      .btn-warning {
+        background: #facc15;
+        color: #111827;
+      }
+      .btn-danger {
+        background: #ef4444;
+        color: #fff;
+      }
+      .btn-blue {
+        background: #38bdf8;
+        color: #082f49;
+      }
+      .preview-img {
+        width: 100%;
+        max-height: 190px;
+        object-fit: cover;
+        border-radius: 14px;
+        margin-top: 10px;
+        display: none;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+      }
+      .bab-box {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 18px;
+        border-radius: 18px;
+        margin-bottom: 18px;
+      }
+      .bab-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .bab-header h3 {
+        margin: 0;
+        font-size: 20px;
+      }
+      .mini-box {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 14px;
+        border-radius: 14px;
+        margin-top: 14px;
+      }
+      .result {
+        width: 100%;
+        min-height: 420px;
+        background: #020617;
+        color: #d1fae5;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 16px;
+        padding: 15px;
+        font-family: Consolas, monospace;
+        font-size: 13px;
+        white-space: pre-wrap;
+      }
+      .action-area {
+        position: sticky;
+        bottom: 0;
+        background: rgba(15, 23, 42, 0.96);
+        padding: 15px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        margin-top: 20px;
+        margin-bottom: 18px;
+        z-index: 10;
+      }
+      @media (max-width: 700px) {
+        h1 {
+          font-size: 28px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .bab-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .btn {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="hero">
+        <span>Prompt Generator</span>
+        <h1>Generator Prompt Pembuatan eBook HTML</h1>
+        <p>
+          Isi form, lalu sistem akan membuat prompt lengkap untuk membuat eBook
+          digital HTML dan CSS.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Data Utama eBook</h2>
+
+        <div class="grid">
+          <div>
+            <label>Judul eBook</label>
+            <input
+              type="text"
+              id="judul"
+              placeholder="Contoh: Meta Ads Otak Kanan"
+            />
+          </div>
+          <div>
+            <label>Subjudul eBook</label>
+            <input
+              type="text"
+              id="subjudul"
+              placeholder="Contoh: Gabungan antara konversi dan branding"
+            />
+          </div>
+        </div>
+
+        <div class="grid">
+          <div>
+            <label>Nama Penulis</label>
+            <input
+              type="text"
+              id="penulis"
+              placeholder="Contoh: Putra Candra Buana"
+            />
+          </div>
+          <div>
+            <label>Target Pembaca</label>
+            <input
+              type="text"
+              id="target"
+              placeholder="Contoh: UMKM, pebisnis online, pemula"
+            />
+          </div>
+        </div>
+
+        <label>Tujuan eBook</label>
+        <textarea
+          id="tujuan"
+          placeholder="Contoh: Membantu pembaca memahami strategi iklan yang tidak hanya mengejar closing, tapi juga membangun branding."
+        ></textarea>
+
+        <div class="grid">
+          <div>
+            <label>Gaya Bahasa</label>
+            <select id="gaya">
+              <option value="santai, mudah dipahami, edukatif, dan persuasif">
+                Santai Edukatif
+              </option>
+              <option value="profesional, rapi, meyakinkan, dan berbobot">
+                Profesional
+              </option>
+              <option value="emosional, tajam, storytelling, dan menggugah">
+                Storytelling Emosional
+              </option>
+              <option value="praktis, langsung ke inti, dan mudah dipraktikkan">
+                Praktis
+              </option>
+            </select>
+          </div>
+          <div>
+            <label>Warna Utama Desain</label>
+            <input
+              type="text"
+              id="warna"
+              placeholder="Contoh: Putih dan biru tua"
+            />
+          </div>
+        </div>
+
+        <div class="grid">
+          <div>
+            <label>Nomor WhatsApp CTA</label>
+            <input type="text" id="wa" value="085174092993" />
+          </div>
+          <div>
+            <label>CTA Akhir eBook</label>
+            <input
+              type="text"
+              id="cta"
+              placeholder="Contoh: Silahkan konsultasi di sini"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Gambar eBook</h2>
+
+        <label>URL Gambar Cover</label>
+        <input
+          type="text"
+          id="cover"
+          placeholder="https://domain.com/gambar-cover.jpg"
+          oninput="previewImage('cover', 'previewCover')"
+        />
+        <img id="previewCover" class="preview-img" />
+
+        <label>URL Foto Penulis</label>
+        <input
+          type="text"
+          id="fotoPenulis"
+          placeholder="https://domain.com/foto-penulis.jpg"
+          oninput="previewImage('fotoPenulis', 'previewPenulis')"
+        />
+        <img id="previewPenulis" class="preview-img" />
+      </div>
+
+      <div class="card">
+        <h2>Form Group Bab eBook</h2>
+        <p>
+          Setiap form group berisi: <b>Bab</b>, <b>Judul Bab</b>,
+          <b>URL Gambar</b>, dan <b>Highlight</b>.
+        </p>
+
+        <div id="babContainer"></div>
+
+        <button class="btn btn-primary" onclick="tambahBab()">
+          + Tambah Form Group Bab
+        </button>
+      </div>
+
+      <div class="card">
+        <h2>Perintah Tambahan</h2>
+        <label>Tambahan Instruksi untuk eBook</label>
+        <textarea
+          id="tambahan"
+          placeholder="Contoh: Tambahkan animasi ringan, gunakan efek shadow pada card, buat CTA lebih menonjol, tambahkan testimoni, buat desain seperti landing page premium, dll."
+        ></textarea>
+      </div>
+
+      <div class="action-area">
+        <button class="btn btn-primary" onclick="generatePrompt()">
+          Generate Prompt
+        </button>
+        <button class="btn btn-blue" onclick="copyPrompt()">Copy Prompt</button>
+        <button class="btn btn-warning" onclick="resetForm()">
+          Reset Form
+        </button>
+      </div>
+
+      <div class="card">
+        <h2>Hasil Prompt</h2>
+        <textarea
+          id="hasilPrompt"
+          class="result"
+          placeholder="Hasil prompt akan muncul di sini..."
+        ></textarea>
+      </div>
+    </div>
+
+    <script>
+      let babIndex = 0;
+
+      function previewImage(inputId, imgId) {
+        const url = document.getElementById(inputId).value.trim();
+        const img = document.getElementById(imgId);
+
+        if (url) {
+          img.src = url;
+          img.style.display = 'block';
+        } else {
+          img.src = '';
+          img.style.display = 'none';
+        }
+      }
+
+      function tambahBab() {
+        babIndex++;
+
+        const container = document.getElementById('babContainer');
+        const bab = document.createElement('div');
+        bab.className = 'bab-box';
+
+        bab.innerHTML = `
+    <div class="bab-header">
+      <h3>Form Group Bab ${babIndex}</h3>
+      <button class="btn btn-danger" onclick="hapusBab(this)">Hapus Form Group</button>
+    </div>
+
+    <label>Bab</label>
+    <input type="text" class="nomorBab" value="Bab ${babIndex}" placeholder="Contoh: Bab 1">
+
+    <label>Judul Bab</label>
+    <input type="text" class="judulBab" placeholder="Contoh: Apa Itu eBook HTML?">
+
+    <label>Isi / Ringkasan Bab</label>
+    <textarea class="isiBab" placeholder="Tuliskan isi atau ringkasan bab ini..."></textarea>
+
+    <label>URL Gambar Bab</label>
+    <input type="text" class="gambarBab" placeholder="https://domain.com/gambar-bab.jpg" oninput="previewBabImage(this)">
+    <img class="preview-img previewBab">
+
+    <div class="mini-box">
+      <h4>Highlight Bab</h4>
+      <div class="highlightContainer"></div>
+      <button class="btn btn-warning" onclick="tambahHighlight(this)">+ Tambah Highlight</button>
+    </div>
+  `;
+
+        container.appendChild(bab);
+        tambahHighlight(bab.querySelector('.btn-warning'));
+      }
+
+      function previewBabImage(input) {
+        const img = input.parentElement.querySelector('.previewBab');
+        const url = input.value.trim();
+
+        if (url) {
+          img.src = url;
+          img.style.display = 'block';
+        } else {
+          img.src = '';
+          img.style.display = 'none';
+        }
+      }
+
+      function tambahHighlight(btn) {
+        const area = btn.parentElement.querySelector('.highlightContainer');
+        const div = document.createElement('div');
+        div.className = 'mini-box';
+
+        div.innerHTML = `
+    <label>Isi Highlight</label>
+    <input type="text" class="highlightItem" placeholder="Contoh: eBook HTML bukan hanya bacaan, tapi bisa menjadi alat branding dan penjualan.">
+    <button class="btn btn-danger" onclick="hapusElemen(this)">Hapus Highlight</button>
+  `;
+
+        area.appendChild(div);
+      }
+
+      function hapusElemen(btn) {
+        btn.parentElement.remove();
+      }
+
+      function hapusBab(btn) {
+        btn.closest('.bab-box').remove();
+      }
+
+      function formatWa(wa) {
+        let number = wa.replace(/\D/g, '');
+        if (number.startsWith('0')) {
+          number = '62' + number.substring(1);
+        }
+        return number;
+      }
+
+      function generatePrompt() {
+        const judul = document.getElementById('judul').value;
+        const subjudul = document.getElementById('subjudul').value;
+        const penulis = document.getElementById('penulis').value;
+        const target = document.getElementById('target').value;
+        const tujuan = document.getElementById('tujuan').value;
+        const gaya = document.getElementById('gaya').value;
+        const warna = document.getElementById('warna').value;
+        const wa = document.getElementById('wa').value;
+        const cta = document.getElementById('cta').value;
+        const cover = document.getElementById('cover').value;
+        const fotoPenulis = document.getElementById('fotoPenulis').value;
+        const tambahan = document.getElementById('tambahan').value;
+
+        const babList = document.querySelectorAll('.bab-box');
+        let babText = '';
+
+        babList.forEach((bab, index) => {
+          const nomorBab = bab.querySelector('.nomorBab').value;
+          const judulBab = bab.querySelector('.judulBab').value;
+          const isiBab = bab.querySelector('.isiBab').value;
+          const gambarBab = bab.querySelector('.gambarBab').value;
+          const highlights = bab.querySelectorAll('.highlightItem');
+
+          let highlightText = '';
+          highlights.forEach((h, i) => {
+            highlightText += `      - Highlight ${i + 1}: ${h.value}\n`;
+          });
+
+          babText += `
+${nomorBab || 'Bab ' + (index + 1)}
+- Judul Bab: ${judulBab}
+- Isi / Ringkasan Bab: ${isiBab}
+- URL Gambar Bab: ${gambarBab}
+- Highlight:
+${highlightText || '      - Belum diisi\n'}
+`;
+        });
+
+        const prompt = `
+Buatkan saya eBook digital menggunakan HTML dan CSS dalam 1 file utuh.
+
+Judul eBook:
+${judul}
+
+Subjudul:
+${subjudul}
+
+Nama Penulis:
+${penulis}
+
+Target Pembaca:
+${target}
+
+Tujuan eBook:
+${tujuan}
+
+Gaya Bahasa:
+Gunakan gaya bahasa ${gaya}.
+
+Warna Utama Desain:
+${warna}
+
+Nomor WhatsApp CTA:
+${wa}
+
+CTA Akhir eBook:
+${cta}
+
+URL Gambar Cover:
+${cover}
+
+URL Foto Penulis:
+${fotoPenulis}
+
+Struktur Bab eBook:
+${babText || 'Belum ada bab. Buatkan minimal 5 bab yang relevan dengan judul eBook.'}
+
+Perintah Tambahan:
+${tambahan || 'Tidak ada perintah tambahan khusus.'}
+
+Ketentuan isi eBook:
+1. Buat isi eBook lengkap, panjang, edukatif, mudah dipahami, dan bernilai.
+2. Setiap bab harus memiliki pembukaan, penjelasan utama, contoh penerapan, highlight penting, dan kesimpulan singkat.
+3. Gunakan bahasa Indonesia yang natural dan cocok untuk target pembaca.
+4. Jangan terlalu teoritis. Berikan contoh yang praktis.
+5. Sisipkan motivasi, edukasi, dan dorongan aksi di setiap bab.
+6. Setiap highlight harus dibuat menonjol secara visual.
+
+Ketentuan desain:
+1. Output harus berupa full source code HTML lengkap.
+2. Semua CSS ditulis di dalam tag <style>.
+3. Jangan gunakan file terpisah.
+4. Jangan gunakan database.
+5. Jangan gunakan backend.
+6. Desain harus mobile friendly.
+7. Gunakan card, badge, tombol, section, box highlight, gradient, dan layout modern.
+8. Gunakan warna utama sesuai input.
+9. Gunakan gambar cover dari URL.
+10. Gunakan foto penulis dari URL.
+11. Gunakan gambar tiap bab dari URL jika tersedia.
+12. Buat desain nyaman dibaca di HP.
+
+Struktur halaman eBook:
+1. Cover eBook yang menarik.
+2. Profil singkat penulis.
+3. Halaman pengantar.
+4. Daftar isi.
+5. Bab-bab sesuai input.
+6. Box highlight penting di setiap bab.
+7. Halaman penutup.
+8. Halaman CTA dengan tombol WhatsApp.
+9. Footer dengan nama penulis.
+
+Tambahan teknis:
+- Buat tombol WhatsApp dengan link:
+https://wa.me/${formatWa(wa)}
+- Buat navigasi daftar isi menggunakan anchor link.
+- Buat tampilan seperti eBook digital modern.
+- Terapkan perintah tambahan yang saya tulis.
+- Output akhir harus dimulai dari <!DOCTYPE html> dan ditutup dengan </html>.
+`;
+
+        document.getElementById('hasilPrompt').value = prompt.trim();
+      }
+
+      function copyPrompt() {
+        const hasil = document.getElementById('hasilPrompt');
+
+        if (!hasil.value.trim()) {
+          alert('Prompt masih kosong. Klik Generate Prompt dulu.');
+          return;
+        }
+
+        hasil.select();
+        hasil.setSelectionRange(0, 999999);
+        document.execCommand('copy');
+        alert('Prompt berhasil dicopy!');
+      }
+
+      function resetForm() {
+        if (confirm('Yakin ingin reset semua form?')) {
+          document.querySelectorAll('input, textarea').forEach((el) => {
+            if (el.id === 'wa') {
+              el.value = '085174092993';
+            } else {
+              el.value = '';
+            }
+          });
+
+          document.getElementById('gaya').selectedIndex = 0;
+          document.getElementById('babContainer').innerHTML = '';
+          document.getElementById('hasilPrompt').value = '';
+
+          document.querySelectorAll('.preview-img').forEach((img) => {
+            img.src = '';
+            img.style.display = 'none';
+          });
+
+          babIndex = 0;
+          tambahBab();
+        }
+      }
+
+      tambahBab();
+    </script>
+  </body>
+</html>
