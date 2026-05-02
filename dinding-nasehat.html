@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jadikan Dinding Rumah Penasehat Pribadi Anda</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #2b2118, #6b4a2b);
+        min-height: 100vh;
+        color: #2b2118;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .ebook {
+        width: 100%;
+        max-width: 760px;
+        background: #fff8ec;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+        position: relative;
+      }
+
+      .topbar {
+        background: #2b2118;
+        color: #f7c35f;
+        text-align: center;
+        padding: 14px 20px;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .page {
+        display: none;
+        min-height: 680px;
+        padding: 42px 34px 110px;
+        animation: fade 0.4s ease;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      @keyframes fade {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .badge {
+        display: inline-block;
+        background: #f7c35f;
+        color: #2b2118;
+        padding: 8px 14px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: 38px;
+        line-height: 1.12;
+        margin-bottom: 18px;
+        color: #2b2118;
+      }
+
+      h2 {
+        font-size: 30px;
+        line-height: 1.2;
+        margin-bottom: 18px;
+        color: #3b2a1d;
+      }
+
+      h3 {
+        font-size: 21px;
+        margin: 18px 0 10px;
+        color: #5a351c;
+      }
+
+      p {
+        font-size: 17px;
+        line-height: 1.75;
+        margin-bottom: 14px;
+      }
+
+      .quote {
+        background: #808080;
+        border-left: 6px solid #f7c35f;
+        padding: 18px;
+        border-radius: 14px;
+        margin: 22px 0;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1.5;
+      }
+
+      .card {
+        background: #fff;
+        padding: 18px;
+        border-radius: 18px;
+        margin: 14px 0;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        border: 1px solid #f1dfbf;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-top: 20px;
+      }
+
+      .mini-card {
+        background: #fff;
+        padding: 18px;
+        border-radius: 18px;
+        border: 1px solid #f1dfbf;
+      }
+
+      .mini-card strong {
+        display: block;
+        font-size: 18px;
+        color: #4a2b17;
+        margin-bottom: 8px;
+      }
+
+      ul {
+        padding-left: 22px;
+        margin: 14px 0;
+      }
+
+      li {
+        font-size: 17px;
+        line-height: 1.7;
+        margin-bottom: 8px;
+      }
+
+      .highlight {
+        color: #a56a00;
+        font-weight: bold;
+      }
+
+      .nav {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #2b2118;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px;
+        gap: 10px;
+      }
+
+      button {
+        border: none;
+        background: #f7c35f;
+        color: #2b2118;
+        padding: 12px 18px;
+        border-radius: 999px;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      button:disabled {
+        background: #806f55;
+        color: #d9c8aa;
+        cursor: not-allowed;
+      }
+
+      .page-number {
+        color: #fff8ec;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .cover {
+        background:
+          linear-gradient(rgba(43, 33, 24, 0.55), rgba(43, 33, 24, 0.75)),
+          url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80');
+        background-size: cover;
+        background-position: center;
+        color: white;
+      }
+
+      .cover h1,
+      .cover p {
+        color: white;
+      }
+
+      .cover .badge {
+        background: #f7c35f;
+        color: #2b2118;
+      }
+
+      .cover-box {
+        background: rgba(0, 0, 0, 0.38);
+        padding: 28px;
+        border-radius: 24px;
+        backdrop-filter: blur(4px);
+      }
+
+      .room-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #7a4b18;
+        margin-bottom: 8px;
+      }
+
+      .footer-note {
+        margin-top: 28px;
+        font-size: 15px;
+        color: #6b5a45;
+        font-style: italic;
+      }
+
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        .page {
+          min-height: 720px;
+          padding: 32px 22px 110px;
+        }
+
+        h1 {
+          font-size: 31px;
+        }
+
+        h2 {
+          font-size: 25px;
+        }
+
+        p,
+        li {
+          font-size: 16px;
+        }
+
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        button {
+          padding: 10px 14px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ebook">
+      <div class="topbar">EBOOK DIGITAL KELUARGA</div>
+
+      <!-- HALAMAN 1 -->
+      <section class="page active cover" id="page1">
+        <div class="cover-box">
+          <span class="badge">Halaman 1</span>
+          <h1>Jadikan Dinding Rumah Penasehat Pribadi Anda</h1>
+          <p>
+            Banyak rumah terlihat indah, tetapi belum tentu mendidik. Banyak
+            dinding terlihat bersih, tetapi belum tentu memberi arah.
+          </p>
+          <p>
+            Padahal, rumah bisa menjadi tempat paling kuat untuk membentuk
+            karakter, kebiasaan, adab, rasa syukur, dan hubungan keluarga.
+          </p>
+
+          <div class="quote">
+            “Rumah bukan hanya tempat pulang, tetapi tempat hati, pikiran, dan
+            karakter keluarga dibentuk setiap hari.”
+          </div>
+
+          <p>
+            Ebook ini mengajak Anda melihat dinding rumah bukan sekadar tempat
+            menggantung hiasan, tetapi sebagai
+            <span class="highlight">penasehat diam</span> yang terus
+            mengingatkan keluarga tanpa harus banyak bicara.
+          </p>
+        </div>
+      </section>
+
+      <!-- HALAMAN 2 -->
+      <section class="page" id="page2">
+        <span class="badge">Halaman 2</span>
+        <h2>Masalahnya: Rumah Kita Sering Diam</h2>
+
+        <p>
+          Banyak orang tua lelah menasehati anak. Banyak pasangan lelah
+          mengingatkan satu sama lain. Banyak keluarga ingin berubah, tetapi
+          lupa membuat lingkungan yang ikut membantu perubahan itu.
+        </p>
+
+        <p>
+          Anak setiap hari melihat layar HP, iklan, video pendek, dan konten
+          yang belum tentu membentuk akhlak. Sementara dinding rumah yang
+          seharusnya bisa menjadi pengingat, justru dibiarkan kosong.
+        </p>
+
+        <div class="card">
+          <h3>Rumah yang diam biasanya hanya menjadi tempat tinggal.</h3>
+          <p>
+            Tetapi rumah yang memiliki pesan, nilai, dan pengingat visual bisa
+            menjadi tempat pendidikan keluarga yang berjalan setiap hari.
+          </p>
+        </div>
+
+        <ul>
+          <li>Dinding kosong tidak memberi arah.</li>
+          <li>Dinding berisi pesan bisa membentuk pikiran.</li>
+          <li>Pesan yang dilihat berulang bisa menjadi kebiasaan.</li>
+          <li>Kebiasaan yang dijaga bisa membentuk karakter.</li>
+        </ul>
+
+        <div class="quote">
+          “Tidak semua nasehat harus keluar dari mulut. Sebagian nasehat bisa
+          hadir dari tulisan yang dilihat setiap hari.”
+        </div>
+      </section>
+
+      <!-- HALAMAN 3 -->
+      <section class="page" id="page3">
+        <span class="badge">Halaman 3</span>
+        <h2>Dinding Sebagai Penasehat Keluarga</h2>
+
+        <p>
+          Konsep ini sederhana: setiap ruangan memiliki fungsi emosional dan
+          pendidikan yang berbeda. Karena itu, pesan pada dinding juga sebaiknya
+          disesuaikan dengan suasana ruangannya.
+        </p>
+
+        <div class="grid">
+          <!-- RUANG TAMU -->
+          <div class="mini-card">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260502-073658_ruang-tamu.jpg"
+              style="width: 100%; border-radius: 12px; margin-bottom: 10px"
+            />
+            <strong>Ruang Tamu</strong>
+            <p>
+              Berisi poster adab Nabi Muhammad. Ruang tamu menjadi wajah
+              keluarga, tempat nilai, akhlak, dan identitas ditampilkan.
+            </p>
+          </div>
+
+          <!-- RUANG MAKAN -->
+          <div class="mini-card">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260502-073658_ruangmakan.jpg"
+              style="width: 100%; border-radius: 12px; margin-bottom: 10px"
+            />
+            <strong>Ruang Makan</strong>
+            <p>
+              Berisi adab makan dan pengingat bahwa di luar sana masih banyak
+              orang yang sulit makan. Ini membangun syukur dan empati.
+            </p>
+          </div>
+
+          <!-- KAMAR ANAK -->
+          <div class="mini-card">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260502-073658_kamaranak.jpg"
+              style="width: 100%; border-radius: 12px; margin-bottom: 10px"
+            />
+            <strong>Kamar Anak</strong>
+            <p>
+              Berisi pesan tentang perjuangan dan pengorbanan orang tua dalam
+              membesarkan anak. Ini membentuk rasa hormat.
+            </p>
+          </div>
+
+          <!-- KAMAR UTAMA -->
+          <div class="mini-card">
+            <img
+              src="https://suksespintar.biz.id/gambarbebas/20260502-073658_kamarutama.jpg"
+              style="width: 100%; border-radius: 12px; margin-bottom: 10px"
+            />
+            <strong>Kamar Utama</strong>
+            <p>
+              Berisi pesan tentang menua bersama, saling support, dan menjaga
+              komitmen pasangan sampai akhir.
+            </p>
+          </div>
+        </div>
+
+        <div class="quote">
+          “Setiap ruangan punya suasana. Setiap suasana bisa ditanamkan pesan.
+          Setiap pesan bisa mengubah perilaku.”
+        </div>
+      </section>
+
+      <!-- HALAMAN 4 -->
+      <section class="page" id="page4">
+        <span class="badge">Halaman 4</span>
+        <h2>Contoh Isi Poster Per Ruangan</h2>
+
+        <div class="card">
+          <div class="room-title">1. Dinding Ruang Tamu</div>
+          <p>
+            “Muliakan tamu, jaga lisan, tebarkan senyum, dan jadikan rumah ini
+            tempat yang menenangkan.”
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="room-title">2. Dinding Ruang Makan</div>
+          <p>
+            “Ambil secukupnya, habiskan tanpa sisa. Ingat, di luar sana masih
+            banyak orang yang berjuang untuk bisa makan hari ini.”
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="room-title">3. Dinding Kamar Anak</div>
+          <p>
+            “Nak, ada banyak lelah yang tidak Ayah dan Ibu ceritakan. Belajarlah
+            sungguh-sungguh, jadilah anak yang membanggakan.”
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="room-title">4. Dinding Kamar Utama</div>
+          <p>
+            “Kita tidak menikah untuk selalu mudah. Kita menikah untuk saling
+            menguatkan, saling memaafkan, dan menua bersama.”
+          </p>
+        </div>
+
+        <p class="footer-note">
+          Catatan: Kalimat pada poster sebaiknya pendek, menyentuh emosi, mudah
+          dibaca, dan sesuai dengan fungsi ruangannya.
+        </p>
+      </section>
+
+      <!-- HALAMAN 5 -->
+      <section class="page" id="page5">
+        <span class="badge">Halaman 5</span>
+        <h2>Mulai Dari Satu Dinding</h2>
+
+        <p>
+          Anda tidak harus langsung mengubah seluruh rumah. Mulailah dari satu
+          dinding yang paling sering dilihat keluarga. Bisa ruang tamu, ruang
+          makan, kamar anak, atau kamar utama.
+        </p>
+
+        <h3>Langkah Praktis:</h3>
+        <ul>
+          <li>Pilih satu ruangan yang ingin diperbaiki suasananya.</li>
+          <li>Tentukan pesan utama yang ingin ditanamkan.</li>
+          <li>Buat kalimat pendek yang kuat dan menyentuh.</li>
+          <li>Cetak dalam bentuk poster yang mudah dibaca.</li>
+          <li>Pasang di tempat yang sering terlihat.</li>
+        </ul>
+
+        <div class="quote">
+          “Anda tidak perlu menasehati setiap saat. Biarkan dinding rumah Anda
+          ikut berbicara setiap hari.”
+        </div>
+
+        <p>
+          Ketika pesan baik dilihat setiap hari, pikiran mulai berubah. Ketika
+          pikiran berubah, sikap ikut berubah. Ketika sikap berubah, keluarga
+          mulai tumbuh dalam arah yang lebih baik.
+        </p>
+
+        <div class="card">
+          <h3>Penutup</h3>
+          <p>
+            Jadikan rumah bukan hanya tempat berlindung dari panas dan hujan,
+            tetapi juga tempat berlindung dari lupa, lalai, ego, dan kerasnya
+            dunia luar.
+          </p>
+          <p>
+            Karena rumah terbaik bukan hanya yang indah dipandang, tetapi yang
+            mampu membimbing penghuninya menjadi manusia yang lebih baik.
+          </p>
+        </div>
+      </section>
+
+      <!-- NAVIGASI -->
+      <div class="nav">
+        <button id="prevBtn" onclick="prevPage()">Sebelumnya</button>
+        <div class="page-number">
+          Halaman <span id="currentPage">1</span> / 5
+        </div>
+        <button id="nextBtn" onclick="nextPage()">Berikutnya</button>
+      </div>
+    </div>
+
+    <script>
+      let currentPage = 1;
+      const totalPages = 5;
+
+      function showPage(pageNumber) {
+        const pages = document.querySelectorAll('.page');
+
+        pages.forEach((page) => {
+          page.classList.remove('active');
+        });
+
+        document.getElementById('page' + pageNumber).classList.add('active');
+
+        document.getElementById('currentPage').innerText = pageNumber;
+        document.getElementById('prevBtn').disabled = pageNumber === 1;
+        document.getElementById('nextBtn').disabled = pageNumber === totalPages;
+      }
+
+      function nextPage() {
+        if (currentPage < totalPages) {
+          currentPage++;
+          showPage(currentPage);
+        }
+      }
+
+      function prevPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          showPage(currentPage);
+        }
+      }
+
+      showPage(currentPage);
+    </script>
+  </body>
+</html>
